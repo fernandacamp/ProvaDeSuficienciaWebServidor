@@ -23,7 +23,7 @@ O sistema permite coletar sugestões, bugs ou reclamações dos usuários, além
 
 Antes de rodar o projeto, certifique-se de ter instalado:
 
-### 🐘 PostgreSQL + pgAdmin (opcional)
+### 🐘 PostgreSQL 
 - Instale PostgreSQL (versão 12 ou superior recomendada) 
 - Crie um banco de dados chamado `feedbacks_db`  
 - Utilize o script SQL abaixo para criar a tabela necessária
