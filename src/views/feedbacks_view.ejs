@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Feedbacks</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <% if (typeof error !=='undefined' && error) { %>
+        <div class="alert alert-danger alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+            <%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+        <% } %>
+
+            <div class="container mt-5 mb-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="/logout" class="btn btn-danger rounded-pill px-4 py-2 shadow-sm">Sair</a>
+                    <a href="/" class="btn btn-primary rounded-pill px-4 py-2 shadow-sm">
+                        <i class="bi bi-plus-circle me-1"></i> Cadastrar novo feedback
+                    </a>
+                </div>
+                
+                <h1 class="fw-bold text-gradient mb-4 text-center flex-grow-1">Feedbacks Cadastrados</h1>
+
+                <div class="mx-auto" style="max-width: 1000px;">
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0 align-middle">
+                                    <thead style="background-color: var(--cor-principal); color: var(--cor-fundo);">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Título</th>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col" class="text-center">Detalhes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%- feedbacks_rows %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

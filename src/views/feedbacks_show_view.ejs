@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalhes do Feedback</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-gradient">Detalhes do Feedback</h1>
+        </div>
+
+        <% if (typeof error !=='undefined' && error) { %>
+            <div class="alert alert-danger alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+                <%= error %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+            <% } %>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header text-white rounded-top-3" style="background-color: var(--cor-principal);">
+                        <h5 class="mb-0 fw-semibold" style="color: var(--cor-fundo);">Informações do Feedback #<%= id %>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>ID:</strong>
+                            <p class="mb-0">
+                                <%= id %>
+                            </p>
+                        </div>
+
+                        <div class="mb-3">
+                            <strong>Título:</strong>
+                            <p class="mb-0">
+                                <%= titulo %>
+                            </p>
+                        </div>
+
+                        <div class="mb-3">
+                            <strong>Descrição:</strong>
+                            <p class="mb-0">
+                                <%= descricao %>
+                            </p>
+                        </div>
+
+                        <div>
+                            <strong>Tipo:</strong>
+                            <p class="mb-0">
+                                <%= tipo %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-header rounded-top-3"
+                        style="background-color: var(--cor-principal);">
+                        <h5 class="mb-0 fw-semibold" style="color: var(--cor-fundo);">
+                            Atualizar Status
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="formStatus" onsubmit="return false;">
+                            <input type="hidden" id="feedbackId" value="<%= id %>">
+
+                            <div class="mb-3">
+                                <label for="status" class="form-label fw-semibold">Status</label>
+                                <select id="status" name="status" class="form-select rounded-pill" required>
+                                    <%- status_options %>
+                                </select>
+                            </div>
+
+                            <button type="button" onclick="atualizarStatus()" class="btn btn-primary w-100 rounded-pill"
+                                style="color: var(--cor-fundo);">
+                                Atualizar Status
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="/feedbacks" class="btn btn-secondary rounded-pill px-4">
+                        Voltar para lista
+                    </a>
+                </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function atualizarStatus() {
+            const id = document.getElementById('feedbackId').value;
+            const status = document.getElementById('status').value;
+
+            if (!status) {
+                alert('Por favor, selecione um status');
+                return;
+            }
+
+            try {
+                const response = await fetch('/feedback/atualizar', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `id=${encodeURIComponent(id)}&status=${encodeURIComponent(status)}`
+                });
+
+                if (response.ok || response.status === 302 || response.redirected) {
+                    window.location.href = '/feedbacks';
+                } else {
+                    alert('Erro ao atualizar status');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao atualizar status: ' + error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

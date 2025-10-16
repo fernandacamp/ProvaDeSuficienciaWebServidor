@@ -1,0 +1,122 @@
+:root {
+    --cor-principal: #6222d7;  
+    --cor-secundaria: #7a57bc;  
+    --cor-fundo: #f5f3ff;      
+    --cor-acao: #c2471b;       
+    --cor-texto: #2e2e2e;      
+    --cor-sucesso: #33ac5f;    
+    --cor-erro: #bd3535;       
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: "Segoe UI", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--cor-principal);
+    font-weight: 600;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-acao));
+    -webkit-background-clip: text;  
+    background-clip: text;         
+    -webkit-text-fill-color: transparent; 
+    color: transparent;            
+}
+
+
+.card {
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.15);
+}
+
+.form-control, .form-select {
+    border-radius: 0.75rem;
+}
+
+.btn-primary {
+    background-color: var(--cor-principal);
+    border-color: var(--cor-principal);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+}
+
+.btn-secondary {
+    background-color: var(--cor-acao);
+    border-color: var(--cor-acao);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #e67342;
+    border-color: #e67342;
+}
+
+.alert-success {
+    background-color: var(--cor-sucesso);
+    color: var(--cor-texto);
+    border-radius: 0.75rem;
+    border: none;
+}
+
+.alert-danger {
+    background-color: var(--cor-erro);
+    color: #fff;
+    border-radius: 0.75rem;
+    border: none;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table thead th {
+    font-weight: 600;
+    border: none;
+    color: #fff;
+}
+
+.table tbody tr:hover {
+    background-color: var(--cor-fundo);
+    transition: background-color 0.3s ease;
+}
+
+.btn, .form-control, .form-select {
+    border-radius: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 576px) {
+    .card {
+        margin: 1rem;
+    }
+    .btn-lg {
+        width: 100%;
+    }
+}
