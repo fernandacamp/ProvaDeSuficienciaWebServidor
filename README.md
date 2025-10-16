@@ -49,8 +49,8 @@ npm install -g ts-node
 Clone o repositório:
 
 ```bash
-git clone https://github.com/CzR21/exame_suficiencia.git
-cd exame_suficiencia
+git clone https://github.com/fernandacamp/ProvaDeSuficienciaWebServidor.git
+cd ProvaDeSuficienciaWebServidor
 ```
 
 ---
